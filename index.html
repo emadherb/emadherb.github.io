@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>معمل العماد لإنتاج زيوت الأعشاب | حمّل التطبيق</title>
+<meta name="description" content="تطبيق معمل العماد لإنتاج زيوت الأعشاب — كتالوج كامل للزيوت والكبسولات والخل والكريمات والعسل الطبيعي وغيرها.">
+<meta name="theme-color" content="#3f4a24">
+<meta property="og:title" content="معمل العماد لإنتاج زيوت الأعشاب">
+<meta property="og:description" content="حمّل تطبيق كتالوج منتجات معمل العماد">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --olive-900:#252c14;
+    --olive-800:#323b1b;
+    --olive-700:#3f4a24;
+    --olive-600:#55622f;
+    --olive-400:#8a9a52;
+    --olive-200:#c9d3a2;
+    --gold:#d8b45a;
+    --gold-soft:#f0dca0;
+    --cream:#f3efdc;
+    --text:#eef0e2;
+    --muted:#bfc6a3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Cairo',Tahoma,sans-serif;
+    color:var(--text);
+    min-height:100vh;
+    background:
+      radial-gradient(1200px 600px at 85% -10%, rgba(216,180,90,.18), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgba(138,154,82,.25), transparent 60%),
+      linear-gradient(160deg, var(--olive-700) 0%, var(--olive-800) 55%, var(--olive-900) 100%);
+    background-attachment:fixed;
+    line-height:1.8;
+  }
+  /* زخرفة أوراق خفيفة */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M20 60c10-25 35-35 50-30-5 15-20 40-50 30z' fill='%23ffffff'/%3E%3Cpath d='M70 100c8-18 26-26 37-22-4 11-15 29-37 22z' fill='%23ffffff'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:28px 20px 40px;position:relative}
+
+  /* الهيدر */
+  header{text-align:center;padding:30px 0 10px}
+  .logo-box{
+    width:132px;height:132px;margin:0 auto 18px;border-radius:50%;
+    background:rgba(243,239,220,.95);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 0 6px rgba(216,180,90,.35),0 18px 40px rgba(0,0,0,.35);
+    overflow:hidden;
+  }
+  .logo-box img{width:86%;height:86%;object-fit:contain}
+  .logo-fallback{display:none;font-size:52px;font-weight:800;color:var(--olive-700)}
+  h1{font-size:clamp(26px,5vw,40px);font-weight:800;color:var(--cream);letter-spacing:.3px}
+  .tagline{color:var(--gold-soft);font-size:clamp(15px,2.6vw,19px);margin-top:4px}
+
+  /* أزرار التحميل */
+  .cta{
+    margin:34px auto 0;max-width:620px;
+    background:rgba(37,44,20,.55);
+    border:1px solid rgba(216,180,90,.35);
+    border-radius:22px;padding:26px 22px;
+    backdrop-filter:blur(6px);
+    box-shadow:0 20px 50px rgba(0,0,0,.3);
+    text-align:center;
+  }
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    width:100%;padding:16px 20px;border-radius:14px;
+    font-family:inherit;font-size:20px;font-weight:700;text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn svg{width:28px;height:28px;flex-shrink:0}
+  .btn-primary{
+    background:linear-gradient(180deg,#e4c470,#c99f3e);
+    color:var(--olive-900);
+    box-shadow:0 10px 24px rgba(201,159,62,.35);
+  }
+  .btn-primary:hover{box-shadow:0 14px 30px rgba(201,159,62,.5)}
+  .btn-secondary{
+    margin-top:12px;
+    background:rgba(201,211,162,.12);
+    color:var(--cream);
+    border:1px solid rgba(201,211,162,.35);
+    font-size:18px;
+  }
+  .btn-secondary:hover{background:rgba(201,211,162,.2)}
+  .cta small{display:block;color:var(--muted);margin-top:12px;font-size:14px}
+  .ios-note{
+    display:none;margin-top:14px;padding:12px 14px;border-radius:12px;
+    background:rgba(216,180,90,.15);color:var(--gold-soft);font-size:15px;
+  }
+
+  /* الأقسام */
+  section{margin-top:52px}
+  h2{
+    font-size:24px;font-weight:800;color:var(--cream);text-align:center;margin-bottom:22px;
+  }
+  h2::after{
+    content:"";display:block;width:60px;height:3px;margin:10px auto 0;border-radius:3px;
+    background:var(--gold);
+  }
+  .cats{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .chip{
+    padding:9px 18px;border-radius:999px;font-weight:600;font-size:16px;
+    background:rgba(138,154,82,.18);border:1px solid rgba(201,211,162,.3);color:var(--cream);
+  }
+
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .step{
+    background:rgba(37,44,20,.5);border:1px solid rgba(201,211,162,.2);
+    border-radius:18px;padding:22px 18px;text-align:center;
+  }
+  .num{
+    width:44px;height:44px;margin:0 auto 10px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--gold);color:var(--olive-900);font-weight:800;font-size:20px;
+  }
+  .step h3{font-size:18px;color:var(--cream);margin-bottom:4px}
+  .step p{color:var(--muted);font-size:15px}
+
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+  .feature{
+    display:flex;gap:12px;align-items:flex-start;
+    background:rgba(138,154,82,.1);border-radius:16px;padding:16px;
+  }
+  .feature .ico{font-size:26px;line-height:1}
+  .feature b{display:block;color:var(--cream);font-size:16px}
+  .feature span{color:var(--muted);font-size:14px}
+
+  footer{
+    margin-top:60px;padding-top:22px;border-top:1px solid rgba(201,211,162,.2);
+    text-align:center;color:var(--muted);font-size:14px;
+  }
+  footer b{color:var(--gold-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="logo-box">
+      <img src="logo.png" alt="شعار معمل العماد"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="logo-fallback">ع</div>
+    </div>
+    <h1>معمل العماد لإنتاج زيوت الأعشاب</h1>
+    <p class="tagline">منتجات طبيعية من قلب نينوى — كل منتجاتنا بين يديك</p>
+  </header>
+
+  <div class="cta">
+    <a class="btn btn-primary" href="emadherb.apk" download id="dlBtn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18a.38.38 0 00-.66-.38l-1.86 3.22a11.4 11.4 0 00-9.84 0L5.22 5.92a.38.38 0 00-.66.38L6.4 9.48A10.8 10.8 0 001 18h22a10.8 10.8 0 00-5.4-8.52zM7 15.25a1.25 1.25 0 111.25-1.25A1.25 1.25 0 017 15.25zm10 0A1.25 1.25 0 1118.25 14 1.25 1.25 0 0117 15.25z"/></svg>
+      حمّل التطبيق للأندرويد
+    </a>
+    <a class="btn btn-secondary" href="catalog.html" id="catBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+      تصفّح المنتجات من المتصفح
+    </a>
+    <div class="ios-note" id="iosNote">
+      📱 جهازك آيفون — التطبيق للأندرويد فقط، تگدر تتصفح كل المنتجات من زر «تصفّح المنتجات».
+    </div>
+    <small>مجاني بالكامل • المنتجات تتحدث تلقائياً بدون تحميل جديد</small>
+  </div>
+
+  <section>
+    <h2>أقسام المنتجات</h2>
+    <div class="cats">
+      <span class="chip">🌿 الزيوت</span>
+      <span class="chip">💊 الكبسولات العشبية والزيتية</span>
+      <span class="chip">🍶 الخل العشبي</span>
+      <span class="chip">🧴 الكريمات</span>
+      <span class="chip">💧 المياه العشبية</span>
+      <span class="chip">🍯 العسل الطبيعي</span>
+      <span class="chip">🥣 المساحيق</span>
+      <span class="chip">🧼 الصابون</span>
+      <span class="chip">🫧 الشامبو</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>طريقة التثبيت</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">١</div>
+        <h3>حمّل الملف</h3>
+        <p>اضغط زر «حمّل التطبيق» وانتظر ينتهي التحميل.</p>
+      </div>
+      <div class="step">
+        <div class="num">٢</div>
+        <h3>اسمح بالتثبيت</h3>
+        <p>إذا طلب منك الجهاز، فعّل «السماح من هذا المصدر» أو «مصادر غير معروفة».</p>
+      </div>
+      <div class="step">
+        <div class="num">٣</div>
+        <h3>ثبّت وافتح</h3>
+        <p>افتح الملف من الإشعارات أو التنزيلات واضغط «تثبيت».</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>شنو تلگه بالتطبيق</h2>
+    <div class="features">
+      <div class="feature"><div class="ico">🖼️</div><div><b>صور وتفاصيل</b><span>صورة كل منتج، الأحجام، الفوائد وطريقة الاستعمال.</span></div></div>
+      <div class="feature"><div class="ico">🔄</div><div><b>تحديث مباشر</b><span>المنتجات الجديدة تظهر تلقائياً.</span></div></div>
+      <div class="feature"><div class="ico">📍</div><div><b>الوكلاء</b><span>وكلاؤنا المعتمدون بالمحافظات.</span></div></div>
+      <div class="feature"><div class="ico">📞</div><div><b>تواصل معنا</b><span>أرقامنا وحساباتنا بضغطة وحدة.</span></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <b>معمل العماد لإنتاج زيوت الأعشاب</b><br>
+    نينوى – الموصل • جميع الحقوق محفوظة © <span id="yr"></span>
+  </footer>
+
+</div>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // إذا الجهاز آيفون/آيباد: نخفي زر الأندرويد ونبرز زر التصفح
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (isIOS) {
+    document.getElementById('dlBtn').style.display = 'none';
+    var c = document.getElementById('catBtn');
+    c.classList.remove('btn-secondary'); c.classList.add('btn-primary'); c.style.marginTop = '0';
+    document.getElementById('iosNote').style.display = 'block';
+  }
+</script>
+</body>
+</html>

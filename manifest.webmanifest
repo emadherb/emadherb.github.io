@@ -1,0 +1,15 @@
+{
+  "name": "معمل العماد لإنتاج زيوت الأعشاب",
+  "short_name": "معمل العماد",
+  "description": "منتجات معمل العماد لإنتاج زيوت الأعشاب ووكلاؤه في المحافظات",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f1e3",
+  "theme_color": "#3d4a22",
+  "icons": [
+    { "src": "logo.png", "sizes": "any", "type": "image/png", "purpose": "any" }
+  ]
+}

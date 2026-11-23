@@ -380,7 +380,7 @@ function pageProduct(id){
   if(!p)return [pageHero('المنتج غير موجود'),h('div',{class:'container block'},h('div',{class:'empty'},'ربما تم حذف هذا المنتج. ',h('a',{href:'#/products'},'عودة للمنتجات')))];
   setTitle(p.name);
   const sizes=splitList(p.size||p.volume||p.weight).filter(x=>x.length<40);
-  const benefits=splitList(p.benefits);
+  const benefits=String(p.benefits||'').split(/\n+/).map(x=>x.replace(/^\s*(?:[-•*]+|\d+\s*[.)\-]\s+)/,'').trim()).filter(Boolean);
   const wa=waNum();
   const sec=(title,body)=>body?h('div',{class:'info-sec'},h('h2',{text:title}),body):null;
   const related=catProducts(p.category).filter(x=>x.id!==p.id).slice(0,4);

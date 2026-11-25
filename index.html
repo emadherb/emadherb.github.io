@@ -15,7 +15,9 @@
 <meta name="apple-mobile-web-app-title" content="معمل العماد">
 <meta property="og:title" content="معمل العماد لإنتاج زيوت الأعشاب">
 <meta property="og:description" content="منتجات طبيعية بعناية وجودة — تصفح منتجاتنا ووكلاءنا">
-<meta property="og:image" content="logo.png">
+<meta property="og:image" content="https://emadherb.github.io/logo.png">
+<meta property="og:url" content="https://emadherb.github.io/">
+<link rel="canonical" href="https://emadherb.github.io/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
@@ -314,7 +316,7 @@ function contactItems(){
 
 /* ---------- components ---------- */
 function productCard(p){
-  return h('a',{class:'prod-card fade-in',href:'#/product/'+encodeURIComponent(p.id)},
+  return h('a',{class:'prod-card fade-in',href:p.page&&/^p\/[\w-]+\.html$/.test(p.page)?p.page:'#/product/'+encodeURIComponent(p.id)},
     h('div',{class:'prod-img'},imgEl(imgOf(p),p.name)),
     h('div',{class:'prod-body'},h('span',{class:'cat',text:catName(p.category)}),h('h3',{text:p.name}),p.desc?h('p',{text:p.desc}):null,h('span',{class:'more'},'عرض التفاصيل ←')));
 }

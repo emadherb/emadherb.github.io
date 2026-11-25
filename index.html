@@ -426,6 +426,15 @@ function pageContact(){
     addr||s.contactNote?h('div',{class:'prose',style:'margin-top:22px;font-size:16px'},addr?h('div',null,h('b',null,'📍 العنوان: '),s.address):null,s.contactNote?h('div',{style:'margin-top:8px'},s.contactNote):null):null)];
 }
 
+/* ---------- عدّاد الزوار (GoatCounter) ---------- */
+const GC_CODE='emadherb'; // اسم الحساب في goatcounter.com
+window.goatcounter={no_onload:true};
+let gcLast=null;
+function gcCount(){
+  const gc=window.goatcounter;if(!gc||typeof gc.count!=='function')return;
+  const path='/'+location.hash.replace(/^#\/?/,'');if(path===gcLast)return;gcLast=path;
+  try{gc.count({path:path,title:document.title})}catch(e){}
+}
 /* ---------- router ---------- */
 function route(){
   const hash=location.hash.replace(/^#\/?/,'');const [r,...rest]=hash.split('/');const arg=decodeURIComponent(rest.join('/'));
@@ -442,11 +451,13 @@ function route(){
   document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('active',a.dataset.r===key));
   $('#nav').classList.remove('open');
   if(r!=='app')window.scrollTo({top:0,behavior:'instant'});
+  setTimeout(gcCount,50);
 }
 window.addEventListener('hashchange',route);
 $('#menuBtn').onclick=()=>$('#nav').classList.toggle('open');
 loadData();
 if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 </script>
+<script async src="https://gc.zgo.at/count.js" data-goatcounter="https://emadherb.goatcounter.com/count" onload="gcCount()"></script>
 </body>
 </html>
